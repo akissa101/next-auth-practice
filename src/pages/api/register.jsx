@@ -1,4 +1,4 @@
-import User from "../../models/user";
+import User from "../../models/User";
 import dbConnect from "../../config/dbConnect";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";

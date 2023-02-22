@@ -8,6 +8,13 @@ export const useGetUsers = (onSuccess, onError) => {
   return useQuery("users", fetchUsers);
 };
 
+export const useGetUser = (onSuccess, id) => {
+  const fetchUser = async () => {
+    return await axios.get(`/api/users/${id}`);
+  };
+  return useQuery(["user", id], fetchUser);
+};
+
 export const useAddUsers = (onSuccess, onError) => {
   const addUsers = async () => {
     return await axios.get("/users");

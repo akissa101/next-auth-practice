@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Button({ title, clicked, ...rest }) {
+export default function Button({ title, clicked }) {
   return (
     <button
       onClick={clicked}

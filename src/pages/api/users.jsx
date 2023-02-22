@@ -1,10 +1,8 @@
-import Users from "../../models/user";
+import Users from "../../models/User";
 import dbConnect from "../../config/dbConnect";
 
 export default async function Home(req, res) {
   const { method, query } = req;
-
-  console.log("method: ", method);
 
   switch (method) {
     case "GET":
@@ -12,11 +10,10 @@ export default async function Home(req, res) {
       dbConnect();
 
       // GET all users
-      const result = await Users.find();
-      if (!result) return res.status(400).json("No users found");
+      const users = await Users.find();
+      if (!users) return res.status(400).json("No users found");
 
-      res.status(200).json(result);
-
+      res.status(200).json(users);
       break;
 
     case "POST":

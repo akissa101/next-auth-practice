@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import User from "../../../models/user";
+import User from "../../../models/User";
 import bcrypt from "bcryptjs";
 import dbConnect from "../../../config/dbConnect";
 
@@ -14,12 +14,12 @@ export default NextAuth({
       async authorize(credentials, req) {
         dbConnect();
 
-        const { email, password } = credentials;
+        const { username, password } = credentials;
 
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ username });
 
         if (!user) {
-          throw new Error("Invalid Email or Password");
+          throw new Error("Invalid Username or Password");
         }
 
         const isPasswordMatched = await bcrypt.compare(password, user.password);
@@ -32,6 +32,7 @@ export default NextAuth({
       },
     }),
   ],
+
   pages: {
     signIn: "/login",
   },
