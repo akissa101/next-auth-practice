@@ -8,15 +8,15 @@ export default async function Home(req, res) {
 
   switch (method) {
     case "GET":
-      // Get data
+      // Connect to the database
       dbConnect();
 
       // GET all users
-
       const result = await Users.find();
-      console.log(result);
+      if (!result) return res.status(400).json("No users found");
 
       res.status(200).json(result);
+
       break;
 
     case "POST":
