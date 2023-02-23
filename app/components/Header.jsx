@@ -12,7 +12,7 @@ function Header() {
   // console.log(data);
 
   return (
-    <header className="flex items-center justify-between space-x-2 py-6 mx-4 px-16 sm:mx-auto shadow-sm shadow-sky-900">
+    <header className="flex items-center justify-between space-x-2 py-6 px-4  sm:px-16 sm:mx-auto shadow-sm shadow-slate-600">
       <div className="logo ">
         <Link href="/">
           <h2 className="text-2xl">
@@ -29,7 +29,7 @@ function Header() {
           <MenuItem title="About" address="/" Icon={AiFillHome} />
         </div>
       </div>
-      <div className="">
+      <div className="flex items-center space-x-6">
         {data?.user ? (
           <>
             <span className="mr-2 ">Hi, {data?.user?.name}</span>
@@ -46,8 +46,8 @@ function Header() {
         ) : (
           <MenuItem title="Login" address="/login" Icon={RiAdminFill} />
         )}
+        <ThemeToggle />
       </div>
-      <ThemeToggle />
     </header>
   );
 }

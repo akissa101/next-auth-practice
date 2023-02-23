@@ -1,9 +1,9 @@
 "use client";
-import { useGetUsers } from "../hooks/useUserData";
+import { useGetUsers } from "../../hooks/useUserData";
 import Link from "next/link";
 import { useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import Register from "../modals/Register";
+import Register from "../../modals/Register";
 
 export default function UsersList() {
   const { data: users } = useGetUsers();

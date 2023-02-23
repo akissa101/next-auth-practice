@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ArticlesList from "../articles/page";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 import Users from "../users/page";
 
 export default function Admin() {

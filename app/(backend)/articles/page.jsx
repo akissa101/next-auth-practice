@@ -1,19 +1,22 @@
 "use client";
-import { useGetArticles } from "../hooks/useArticleData";
+import { useGetArticles } from "../../hooks/useArticleData";
 import Link from "next/link";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import AddArticle from "app/modals/AddArticle";
+import { useState } from "react";
 
 export default function ArticlesList() {
   const { data: articles } = useGetArticles();
+  const [showArticle, setShowArticle] = useState(false);
 
   return (
     <div className="h-screen mt-4">
-      {/* {showRegister && <Register show={() => setShowRegister(false)} />} */}
+      {showArticle && <AddArticle show={() => setShowArticle(false)} />}
       <div className="flex justify-between  items-center">
         <h1 className="text-3xl p-4 font-bold font-sans">Articles</h1>
         <button
-          onClick={() => setShowRegister(!showRegister)}
-          className="bg-sky-400 dark:bg-sky-800 hover:opacity-50 py-2 px-4 rounded-lg transition-all duration-300"
+          onClick={() => setShowArticle(!showArticle)}
+          className="bg-sky-400 dark:bg-amber-800 hover:opacity-50 py-2 px-4 rounded-lg transition-all duration-300"
         >
           Add Article
         </button>

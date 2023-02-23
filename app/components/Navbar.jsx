@@ -1,4 +1,4 @@
-import ArticlesList from "../articles/page";
+import ArticlesList from "app/(backend)/articles/page";
 
 export default function Navbar({ clickUser, clickArticle }) {
   return (

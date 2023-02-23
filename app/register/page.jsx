@@ -67,7 +67,7 @@ const Register = () => {
   };
 
   return (
-    <div className="md:w-2/3 m-auto mt-8 rounded-xl bg-gray-300 p-4">
+    <div className="md:w-[40%] px-8 m-auto mt-8 rounded-xl bg-gray-300 dark:bg-slate-700 shadow-md shadow-slate-500 p-4">
       {success ? (
         <section className="">
           <h1>Success!</h1>
@@ -76,7 +76,7 @@ const Register = () => {
           </p>
         </section>
       ) : (
-        <section className="flex flex-col">
+        <section className="flex flex-col ">
           <p
             ref={errRef}
             className={errMsg ? "errmsg" : "offscreen"}
@@ -84,15 +84,9 @@ const Register = () => {
           >
             {errMsg}
           </p>
-          <h1 className="text-4xl font-sans font-extrabold text-blue-900">
-            Register
-          </h1>
+          <h1 className="text-4xl font-sans font-extrabold  py-4">Register</h1>
           <form onSubmit={handleRegister} className="flex flex-col my-4">
-            <label htmlFor="name">
-              Name:
-              <FaCheck className={validName ? "valid" : "hide"} />
-              <FaTimes className={validName || !name ? "hide" : "invalid"} />
-            </label>
+            <label htmlFor="name">Name:</label>
             <input
               type="text"
               id="name"
@@ -101,57 +95,24 @@ const Register = () => {
               onChange={(e) => setName(e.target.value)}
               value={name}
               required
-              aria-invalid={validName ? "false" : "true"}
-              aria-describedby="uidnote"
-              onFocus={() => setNameFocus(true)}
-              onBlur={() => setNameFocus(false)}
               className="p-2 rounded-lg "
             />
-            <p
-              id="uidnote"
-              className={
-                nameFocus && name && !validName ? "instructions" : "offscreen"
-              }
-            >
-              <FaInfoCircle />4 to 24 characters. &nbsp; &nbsp; Must begin with
-              a letter. <br /> Letters, numbers, underscores, hyphens allowed.
-            </p>
 
             <label htmlFor="email" className="mt-3">
               Email:
-              <FaCheck className={validEmail ? "valid" : "hide"} />
-              <FaTimes className={validEmail || !email ? "hide" : "invalid"} />
             </label>
             <input
               type="text"
               id="email"
-              ref={emailRef}
               autoComplete="off"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               required
-              aria-invalid={validEmail ? "false" : "true"}
-              aria-describedby="uidnote"
-              onFocus={() => setEmailFocus(true)}
-              onBlur={() => setEmailFocus(false)}
               className="p-2 rounded-lg"
             />
-            <p
-              id="uidnote"
-              className={
-                emailFocus && email && !validName ? "instructions" : "offscreen"
-              }
-            >
-              <FaInfoCircle />
-              it must be an email format such as example@media.com
-            </p>
 
             <label htmlFor="password" className="mt-3">
               Password:
-              <FaCheck className={validPassword ? "valid" : "hide"} />
-              <FaTimes
-                className={validPassword || !password ? "hide" : "invalid"}
-              />
             </label>
             <input
               type="password"
@@ -159,36 +120,10 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               required
-              aria-invalid={validPassword ? "false" : "true"}
-              aria-describedby="passwordnote"
-              onFocus={() => setPasswordFocus(true)}
-              onBlur={() => setPasswordFocus(false)}
               className="p-2 rounded-lg"
             />
-            <p
-              id="passwordnote"
-              className={
-                passwordFocus && !validPassword ? "instructions" : "offscreen"
-              }
-            >
-              <FaInfoCircle />8 to 24 characters. &nbsp; &nbsp; Must include
-              uppercase and lowercase letters, a number and a special character.
-              &nbsp; &nbsp; Allowed special characters:{" "}
-              <span aria-label="exclamation mark">!</span>{" "}
-              <span aria-label="at symbol">@</span>{" "}
-              <span aria-label="hashtag">#</span>{" "}
-              <span aria-label="dollar sign">$</span>{" "}
-              <span aria-label="percent">%</span>
-            </p>
-
             <label htmlFor="confirm_pwd" className="mt-3">
               Confirm Password:
-              <FaCheck
-                className={validMatch && matchPassword ? "valid" : "hide"}
-              />
-              <FaTimes
-                className={validMatch || !matchPassword ? "hide" : "invalid"}
-              />
             </label>
             <input
               type="password"
@@ -196,36 +131,16 @@ const Register = () => {
               onChange={(e) => setMatchPassword(e.target.value)}
               value={matchPassword}
               required
-              aria-invalid={validMatch ? "false" : "true"}
-              aria-describedby="confirmnote"
-              onFocus={() => setMatchFocus(true)}
-              onBlur={() => setMatchFocus(false)}
               className="p-2 rounded-lg mb-2"
             />
-            <p
-              id="confirmnote"
-              className={
-                matchFocus && !validMatch ? "instructions" : "offscreen"
-              }
-            >
-              <FaInfoCircle />
-              Must match the first password input field.
-            </p>
-
-            <button
-              className="disabled:cursor-not-allowed  disabled:opacity-40  p-2 bg-gray-700 hover:bg-gray-800 rounded-lg text-white"
-              disabled={
-                !validName || !validPassword || !validMatch ? true : false
-              }
-            >
+            <button className="mt-2 p-2 bg-amber-700 hover:bg-amber-800 rounded-lg text-white">
               Sign Up
             </button>
           </form>
           <p>
-            Already registered?
-            <br />
+            Already registered? &nbsp; &nbsp; &nbsp; &nbsp;
             <span className="line">
-              <Link href="/">Sign In</Link>
+              <Link href="/login">Sign In</Link>
             </span>
           </p>
         </section>
